@@ -61,7 +61,7 @@
                 <input type="text"  name="father_name" value="<?php echo $row['father']?$row['father']:'';?>"/>
             </td>   
                  <td align="center" rowspan="2" style="padding-right: 60px;" >
-                    <img src="../Uploaded/<?php echo $image; ?>" align="right" style='width: 20px;height: 20px;border: 1px solid #000;' />    
+                    <img src="../Uploaded/<?php echo $image; ?>" align="left" style="height:150px; width:150px; border: 1px solid #000;"  />    
                 </td>
                                                      
             </tr>
