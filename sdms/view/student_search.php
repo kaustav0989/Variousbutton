@@ -126,28 +126,7 @@
             <th colspan='3'>Operation</th>
           </tr> 
     <?php
-        /*
-        if( mysqli_num_rows($retval) > 0 )
-            {   
 
-              echo "hello"; exit;
-              $even = 0;
-              while($row = mysqli_fetch_assoc($retval))
-              {
-                 if( empty($row['img_name']) )
-                 {
-                    if($row['stud_gender']=='male')
-                      $image = 'no_image.png';
-                    else
-                      $image = 'no-avatar-female.png';
-                 } 
-                 else
-                 {
-                    $image = $row['img_name'];
-                 }
-          */
-          
-          //print_r($_SESSION['data']); exit;
           if(!empty( $_SESSION['data'] )){
           foreach ($_SESSION['data'] as $row) {
               if( empty($row['image']) )

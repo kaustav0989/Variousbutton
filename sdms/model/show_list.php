@@ -7,6 +7,7 @@
 	class ShowList extends BaseController
     {
     
+    	/*For showing the student list*/
     	public function showstudentlist($where, $limit)
     	{	
 
@@ -38,6 +39,7 @@
 		    return $data;		
     	}
 
+    	/*For showing the edited student details*/
     	function showeditlist($id)
     	{
     		$obj = new BaseController();
@@ -78,6 +80,7 @@
 		    return $data;
     	}
 
+    	/*For evaluating the total data count relevant for pagination*/
     	public function pagination($where)
     	{
     		$obj = new BaseController();
@@ -89,6 +92,7 @@
     		return $total;
     	}
 
+    	/*Adding the classname in class table and retrieving the class id*/
     	public function class($class)
     	{
     		$obj = new BaseController();
@@ -99,6 +103,7 @@
     		return $row['i_id'];
     	}
 
+    	/*Adding the statusname in status table and retrieving the status id*/
     	public function status($status)
     	{
     		$obj = new BaseController();
@@ -108,6 +113,8 @@
     		while($row = $result->fetch_assoc())
     		return $row['i_id'];
     	}
+    	
+    	/*Adding the statusname in state table and retrieving the state id*/
     	public function state($state)
     	{
     		$obj = new BaseController();
@@ -117,6 +124,8 @@
     		while($row = $result->fetch_assoc())
     		return $row['i_id'];
     	}
+
+    	/*Adding the cityname in city table and retrieving the city id*/
     	public function city($city)
     	{
     		$obj = new BaseController();
@@ -137,6 +146,7 @@
     		
     	}
     
+    	/*Adding the pin in Pincode table and retrieving the pin id*/
     	public function pin($pin)
     	{
     		$obj = new BaseController();
@@ -155,6 +165,7 @@
 			}
     	}
 
+    	/*Adding the section in Section table and retrieving the section id*/
     	public function sec($val)
     	{
     		$obj = new BaseController();
@@ -164,6 +175,7 @@
     		return $row['i_id'];
     	}
 
+    	/*Retrieving the year id*/
     	public function year($val)
     	{
     		$obj = new BaseController();
@@ -173,6 +185,7 @@
     		return $row['i_year_id'];
     	}
 
+    	/*Adding details in Personal_details table and getting the student id*/
     	public function total($col,$val)
     	{
     		$obj = new BaseController();
@@ -183,6 +196,7 @@
     			return $obj->conn->insert_id;
     	}
 
+    	/*Adding details in Student_classes table*/
     	public function sub($col,$val)
     	{
     		$obj = new BaseController();
@@ -191,6 +205,7 @@
     		return $result = $obj->conn->query($sql);
     	}
 
+    	/*Adding the image by updating*/
     	public function image($file_name,$id)
     	{
  
@@ -233,6 +248,7 @@
     		$obj->conn->commit();
     	}
 
+    	/*For updating the Personal_details table*/
     	public function totalUpdate($set,$id)
     	{
     		$obj = new BaseController();
@@ -240,10 +256,21 @@
     		return $result = $obj->conn->query($sql);
     	}
 
+    	/*For updating the Student_classes table*/
     	public function subUpdate($updt,$id)
     	{
     		$obj = new BaseController();
     		$sql = "UPDATE `Student_classes` SET {$updt} WHERE `i_student_id`=".$id;
+    		return $result = $obj->conn->query($sql);
+    	}
+
+    	/*For deleting from Personal details and student classes table*/
+    	public function delete($id)
+    	{
+    		$obj = new BaseController();
+    		$sql = "DELETE spd.*, scl.* 
+			FROM Personal_details AS spd ,Student_classes as scl 
+			WHERE spd.i_stud_id = scl.i_student_id AND spd.i_stud_id =".$id;
     		return $result = $obj->conn->query($sql);
     	}
     }

@@ -492,7 +492,6 @@
 
           if( $retval > 0 )
           {
-            //echo "hello";
             if(isset( $_FILES['file_name'] ) )
               {
 
@@ -545,79 +544,10 @@
                   exit;
           }
         }    
-        
-              /*
-              $exception_arr = array('id_hidden','stud_update', 'page');
-
-              $set = [];
-
-              foreach($_POST As $key=>$val)
-              {
-                if(!in_array( $key, $exception_arr )  )
-                $set[] = $key ."='".$val."'";
-              }
-
-              $set = implode(', ',$set);
-
-
-              $sql='UPDATE `Stud_table1` SET '.$set.' WHERE stud_id='. (decrypt($_POST['id_hidden']));
-              $retval = mysqli_query($conn,$sql); 
-              if( $retval > 0 )
-              {     
-                    if(isset( $_FILES['image'] ) )
-                    {
-                          $name       = $_FILES['image']['name'];
-                          $tmp_name   = $_FILES['image']['tmp_name'];
-                          $type       = $_FILES['image']['type'];
-                         
-                          $size       = $_FILES['image']['size'];
-                          $extension  = strtolower(end(explode('.',$_FILES['image']['name'])));
-
-                          if( !empty( $name ) )
-                          {
-                              $ext_arr = array('jpg','jpeg','gif','png');
-                              $type    = reset(explode('/',$type));
-
-                              if( (in_array($extension, $ext_arr)) && strtolower($type) == 'image' )
-                              {
-                                  $file_name  = 'profile_'.decrypt($_POST['id_hidden']).'.'.$extension; 
-                                  $location   = "../Uploaded/";
-                                  
-                              if( file_exists( $file_name ) )
-                                {
-                                  unlink($file_name);
-                  
-                                }  
-                                if( move_uploaded_file($tmp_name , $location.$file_name) )
-                                {
-
-                                      $updt_img = "UPDATE `Stud_table1` SET `img_name` = '".$file_name."' WHERE
-                                      `stud_id` = ".decrypt($_POST['id_hidden']);
-                                     
-                                     mysqli_query($conn,$updt_img);
-                                }
-                              }
-                          }
-                    }
-                    set_msg('Data updated successfully', 'success');   
-                    header("Location: all_student_details.php?page=edit&stud_id=".$_POST['id_hidden']);
-                    exit;            
-              }        
-              else
-              {
-                  set_msg('Nothing to update.', 'error'); 
-                  header("Location: all_student_details.php?page=edit&stud_id=".$_POST['id_hidden']);
-                  exit;
-              }
-              */
-
       }    
       elseif(isset( $_GET["stud_id"] ) && is_numeric( decrypt( $_GET["stud_id"] ) ) )
       {
          $id      = decrypt( $_GET["stud_id"] );
-        /* $sql     = "SELECT * FROM `Personal_details` where `i_stud_id`='$id'";
-         $retval  = mysqli_query($conn,$sql);
-         */
          $object1 = new ShowList();
          $datas = $object1->showeditlist($id);
          $_SESSION['edit'] = $datas;
@@ -636,9 +566,9 @@
     {
         if( isset($_GET["stud_id"]) && is_numeric(decrypt($_GET["stud_id"])) )
         {
-            $id     =  decrypt($_GET["stud_id"]);
-            $sql    =  "DELETE FROM Stud_table1 WHERE `stud_id` = {$id}";
-            $retval =  mysqli_query($conn,$sql);
+            $id = decrypt($_GET["stud_id"]);
+            $obj = new ShowList();
+            $retval = $obj->delete($id);
             if( $retval )
             {   
                 set_msg('Data deleted successfully','success');
@@ -666,8 +596,9 @@
         if(isset( $_GET["stud_id"] ) && is_numeric( decrypt( $_GET["stud_id"] ) ) )
         {
             $id      = decrypt( $_GET["stud_id"] );
-            $sql     = "SELECT * FROM Stud_table1 where stud_id='$id'";
-            $retval  = mysqli_query($conn,$sql);  
+            $object1 = new ShowList();
+            $datas = $object1->showeditlist($id);
+            $_SESSION['edit'] = $datas; 
             include("../view/view_student.php"); 
         }  
         else
