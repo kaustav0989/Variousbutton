@@ -282,5 +282,24 @@
 			WHERE spd.i_stud_id = scl.i_student_id AND spd.i_stud_id =".$id;
     		return $result = $obj->conn->query($sql);
     	}
+
+        /*For selecting all states for AJAX Call*/
+
+        public function allstate()
+        {
+            $obj = new BaseController();
+            $sql = "SELECT * FROM State";
+            $result = $obj->conn->query($sql);
+            if( $result->num_rows > 0 )
+            {
+                $data = array();
+                while($row = $result->fetch_assoc())
+                {
+                    $data[] = $row;
+                }
+            }
+            //print_r($data);
+            return $data; 
+        }
     }
 ?>

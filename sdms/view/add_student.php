@@ -1,6 +1,7 @@
 <?php
 include("header.html");
 include("../controller/login_check.php");
+include("../controller/show_list.php");
 ?>
 <html>
     
@@ -71,13 +72,27 @@ include("../controller/login_check.php");
             <td>
                 <input type="text" name="stud_address"/>
             </td>
+    <!--        <td>State</td>
+            <td>
+                <input type="text" name="stud_state" />
+            </td>
             <td>City</td>
             <td>
                 <input type="text" name="stud_city" />
-            </td>
+            </td>  -->
             <td>State</td>
             <td>
-                <input type="text" name="stud_state" />
+                <select>
+                    <option>Select</option>
+                    <?php
+                        $obj = new ShowList();
+                        $result = $obj->allstate(); 
+                        foreach ($result as $row) {
+                                
+                    ?>
+                    <option value="<?php echo $row['i_id']?>"><?php echo $row['s_name'];?></option>
+                <?php  } ?>
+                </select>
             </td>
             <td>Pin</td>
             <td>
