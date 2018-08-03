@@ -7,6 +7,15 @@
 	class ShowList extends BaseController
     {
     
+    	/*For login of the users*/	
+    	public function fetch($user ,$pwd)
+    	{
+    		$obj = new BaseController();
+    		$sql = "SELECT * FROM `user_details_table1` WHERE `user_id` = '".$user."' AND `user_password` = '".$pwd."'"; 
+			$result = $obj->conn->query($sql);
+		    return $result->num_rows;
+    	}
+
     	/*For showing the student list*/
     	public function showstudentlist($where, $limit)
     	{	

@@ -66,7 +66,7 @@
                   <select name="stud_section">
                       <option value='' <?php echo (!isset($_POST['stud_section']))?'selected':''; ?>>Select</option>
                       <option value="A" <?php echo ( isset($_POST['stud_section']) && $_POST['stud_section'] == 'A' )?'selected':''; ?> >A</option>
-                      <option value="B" <?php echo ( isset($_POST['stud_class']) && $_POST['stud_class'] == 'B' )?'selected':''; ?>>B</option>
+                      <option value="B" <?php echo ( isset($_POST['stud_section']) && $_POST['stud_section'] == 'B' )?'selected':''; ?>>B</option>
                       <option value="C" <?php echo ( isset($_POST['stud_section']) && $_POST['stud_section'] == 'C' )?'selected':''; ?>>C</option>
                       <option value="D" <?php echo ( isset($_POST['stud_section']) && $_POST['stud_section'] == 'D' )?'selected':''; ?>>D</option>
                       </select>
@@ -82,9 +82,9 @@
                 <td>Gender:</td>  
                 <td>
                   <select name="stud_gender">
-                    <option value='' <?php echo (!isset($_POST['stud_status'])) ?'selected':''; ?>>Select</option>
-                    <option value="male" <?php echo ( isset($_POST['stud_status']) && $_POST['stud_status'] == 'male') ?'selected':'';?>>Male</option>
-                    <option value="female" <?php echo ( isset($_POST['stud_status']) && $_POST['stud_status'] == 'female') ?'selected':'';?>>Female</option>
+                    <option value='' <?php echo (!isset($_POST['stud_gender'])) ?'selected':''; ?>>Select</option>
+                    <option value="male" <?php echo ( isset($_POST['stud_gender']) && $_POST['stud_gender'] == 'male') ?'selected':'';?>>Male</option>
+                    <option value="female" <?php echo ( isset($_POST['stud_gender']) && $_POST['stud_gender'] == 'female') ?'selected':'';?>>Female</option>
                   </select> 
                 </td>
 
