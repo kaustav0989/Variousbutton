@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 27, 2018 at 08:50 PM
--- Server version: 5.7.22-0ubuntu0.16.04.1
+-- Generation Time: Aug 03, 2018 at 07:17 PM
+-- Server version: 5.7.23-0ubuntu0.16.04.1
 -- PHP Version: 7.0.30-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -35,7 +35,7 @@ CREATE TABLE `City` (
 -- Dumping data for table `City`
 --
 
-INSERT IGNORE INTO `City` (`i_id`, `s_name`) VALUES
+INSERT INTO `City` (`i_id`, `s_name`) VALUES
 (1, 'Kharagpur'),
 (2, 'Mumbai'),
 (3, 'Delhi'),
@@ -81,7 +81,19 @@ INSERT IGNORE INTO `City` (`i_id`, `s_name`) VALUES
 (43, 'Noida'),
 (44, 'Bhilai'),
 (45, 'Cuttack'),
-(46, 'Kochi');
+(46, 'Kochi'),
+(51, 'If'),
+(53, 'Ranaghat'),
+(54, 'AAAA'),
+(55, 'vsvs'),
+(56, 'Bankura'),
+(57, 'ASD'),
+(58, 'grgrewgeg'),
+(59, 'vvvv'),
+(60, 'WWWW'),
+(76, 'ZX'),
+(77, 'gn'),
+(78, 'QWE');
 
 -- --------------------------------------------------------
 
@@ -98,15 +110,13 @@ CREATE TABLE `Class` (
 -- Dumping data for table `Class`
 --
 
-INSERT IGNORE INTO `Class` (`i_id`, `s_name`) VALUES
+INSERT INTO `Class` (`i_id`, `s_name`) VALUES
 (5, 'Five'),
 (6, 'Six'),
 (7, 'Seven'),
 (8, 'Eight'),
 (9, 'Nine'),
-(10, 'Ten'),
-(11, 'Eleven'),
-(12, 'Twelve');
+(10, 'Ten');
 
 -- --------------------------------------------------------
 
@@ -161,7 +171,7 @@ CREATE TABLE `Exam_type` (
 -- Dumping data for table `Exam_type`
 --
 
-INSERT IGNORE INTO `Exam_type` (`i_exam_type_id`, `s_exam_type`) VALUES
+INSERT INTO `Exam_type` (`i_exam_type_id`, `s_exam_type`) VALUES
 (1, 'Half-Yearly'),
 (2, 'Annual'),
 (3, 'Internal'),
@@ -238,20 +248,36 @@ CREATE TABLE `Personal_details` (
   `i_state_id` int(4) NOT NULL,
   `i_pin_id` int(4) NOT NULL,
   `s_stud_contact` char(10) NOT NULL,
-  `s_img_name` varchar(12) NOT NULL
+  `s_img_name` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Personal_details`
 --
 
-INSERT IGNORE INTO `Personal_details` (`i_stud_id`, `s_stud_fname`, `s_stud_lname`, `s_stud_father`, `s_stud_mother`, `dt_stud_dob`, `s_stud_gender`, `s_stud_address`, `i_city_id`, `i_state_id`, `i_pin_id`, `s_stud_contact`, `s_img_name`) VALUES
+INSERT INTO `Personal_details` (`i_stud_id`, `s_stud_fname`, `s_stud_lname`, `s_stud_father`, `s_stud_mother`, `dt_stud_dob`, `s_stud_gender`, `s_stud_address`, `i_city_id`, `i_state_id`, `i_pin_id`, `s_stud_contact`, `s_img_name`) VALUES
 (1, 'Kaustav', 'Paul', 'Kaushik Kumar Paul', 'Soma Paul', '1996-11-23', 'male', '43,Ghatakpara Lane', 7, 11, 1, '7797480989', ''),
 (2, 'Rajdeep', 'Palit', 'Rana Palit', 'mother Palit', '1996-11-03', 'male', 'Sarsuna Lane', 7, 11, 3, '9434842692', ''),
 (3, 'Subham', 'Yadav', 'Jagdish Yadav', 'Bismodia Yadav', '1995-07-12', 'male', 'DE Block', 6, 7, 4, '7585855522', ''),
 (4, 'Arup', 'Mondal', 'Astapada Mondal', 'Mother Mondal', '1996-04-27', 'male', 'New Town', 5, 6, 1, '4848484454', ''),
 (5, 'Soutrick', 'Chakraborty', 'Rail Chakraborty', 'Mother Chakraborty', '1996-04-15', 'male', 'Parnashree', 5, 7, 4, '7585855522', ''),
-(6, 'Samrat', 'Gupta', 'Late Gupta', 'Maa Gupta', '1995-04-16', 'male', 'Santipur', 10, 22, 2, '9735691878', '');
+(6, 'Samrat', 'Gupta', 'Late Gupta', 'Maa Gupta', '1995-04-16', 'male', 'Santipur', 10, 22, 2, '9735691878', ''),
+(7, 'Kaustav', 'Paul', 'Kaushik', 'Soma', '2018-06-25', 'male', 'afsdgsdf', 53, 11, 1, '7797480989', NULL),
+(8, 'Kaustav', 'Paul', 'Kaushik', 'Soma', '2018-06-25', 'male', 'afsdgsdf', 53, 11, 1, '7797480989', NULL),
+(9, 'AAAA', 'AAAA', 'AAAA', 'AAAA', '2018-06-25', 'female', 'AAAA', 54, 11, 1, 'AAAA', NULL),
+(10, 'AAAA', 'AAAA', 'AAAA', 'AAAA', '2018-06-25', 'female', 'AAAA', 54, 11, 1, 'AAAA', NULL),
+(11, 'dgfsdfv', 'svsfv', 'svsv', 'vssfvdsfv', '2018-06-25', 'female', 'svsv', 55, 11, 2, '7797480989', NULL),
+(13, 'dbdfb', 'dbdb', 'dbdb', 'dbdbd', '2018-06-25', 'female', 'svsv', 55, 11, 2, '7797480989', NULL),
+(15, 'Amit', 'Roy', 'Ashoke Roy', 'Mother Roy', '1996-11-16', 'male', 'Hello', 1, 11, 2, '7585855222', NULL),
+(16, 'adegvdrf', 'dbdfb', 'dfbd', 'dbdfb', '2018-01-02', 'female', 'dvfdsvf', 57, 11, 1, '123456', NULL),
+(17, 'Sujan', 'Dey', 'jgjgjij', 'jgjhgjhjj', '2018-06-28', 'female', 'sgvrgv', 58, 11, 24, '15256', NULL),
+(24, 'ddffg', 'gjyhgjgj', 'jgjgj', 'jjh', '2016-06-09', 'female', 'ZX', 76, 11, 1, '7852314512', NULL),
+(25, 'sdvbgsb', 'dfb', 'fbd', 'dbdb', '2018-07-30', 'female', 'bngd', 77, 11, 1, '123', NULL),
+(26, 'greg', 'bfdfb', 'fbdfb', 'bfdfb', '2018-07-31', 'female', 'Hello', 53, 11, 1, '789456', NULL),
+(27, 'Kaustav', 'Paul', 'dfbfdb', 'fdbdfb', '2018-07-31', 'male', 'Hello', 1, 11, 1, '789456', 'profile_27.jpg'),
+(29, 'gn fg', 'nmfgmnf', 'm nhngfn', 'nfnmf', '2018-07-31', 'male', 'gngfn', 53, 11, 1, '789456123', NULL),
+(30, 'fbvfxdb', 'bdgnbgdfgn', 'gnfgnfgnfg', 'ngfnfymnfgm', '2018-07-30', 'female', 'adafef', 53, 11, 1, '4561237', NULL),
+(32, 'Kaustav', 'Paul', 'Kaushik Paul', 'Soma Paul', '2013-05-09', 'female', 'XYZ', 53, 11, 2, '7797480989', 'profile_32.jpg');
 
 -- --------------------------------------------------------
 
@@ -268,11 +294,17 @@ CREATE TABLE `Pincode` (
 -- Dumping data for table `Pincode`
 --
 
-INSERT IGNORE INTO `Pincode` (`i_id`, `s_no`) VALUES
+INSERT INTO `Pincode` (`i_id`, `s_no`) VALUES
 (1, '741201'),
 (2, '742101'),
 (3, '700001'),
-(4, '742401');
+(4, '742401'),
+(7, '745121'),
+(16, '742404'),
+(17, '756210'),
+(23, 'vssvsv'),
+(24, '123456'),
+(26, '556555');
 
 -- --------------------------------------------------------
 
@@ -289,7 +321,7 @@ CREATE TABLE `Room` (
 -- Dumping data for table `Room`
 --
 
-INSERT IGNORE INTO `Room` (`i_id`, `s_name`) VALUES
+INSERT INTO `Room` (`i_id`, `s_name`) VALUES
 (1, 'hall1'),
 (2, 'hall2'),
 (3, 'hall3'),
@@ -338,7 +370,7 @@ CREATE TABLE `Section` (
 -- Dumping data for table `Section`
 --
 
-INSERT IGNORE INTO `Section` (`i_id`, `s_name`) VALUES
+INSERT INTO `Section` (`i_id`, `s_name`) VALUES
 (1, 'A'),
 (2, 'B'),
 (3, 'C'),
@@ -359,7 +391,7 @@ CREATE TABLE `State` (
 -- Dumping data for table `State`
 --
 
-INSERT IGNORE INTO `State` (`i_id`, `s_name`) VALUES
+INSERT INTO `State` (`i_id`, `s_name`) VALUES
 (1, 'Andhra Pradesh'),
 (2, 'Assam'),
 (3, 'Bihar'),
@@ -392,7 +424,13 @@ INSERT IGNORE INTO `State` (`i_id`, `s_name`) VALUES
 (30, 'Assam'),
 (31, 'Arunachal Pradesh'),
 (32, 'Andhra Pradesh'),
-(33, 'Andaman and Nicobar Islands union territ');
+(33, 'Andaman and Nicobar Islands union territ'),
+(57, 'Hello'),
+(58, 'West Bengal'),
+(59, 'West Bengal'),
+(60, 'Hello'),
+(61, 'Hello'),
+(62, 'Hello');
 
 -- --------------------------------------------------------
 
@@ -420,18 +458,33 @@ CREATE TABLE `Student_classes` (
   `i_secion_id` int(4) NOT NULL,
   `i_roll_no` int(4) NOT NULL,
   `i_year_id` int(4) NOT NULL,
-  `i_room_id` int(4) NOT NULL,
-  `i_library_id` int(4) NOT NULL
+  `i_status_id` int(10) NOT NULL,
+  `i_room_id` int(4) DEFAULT NULL,
+  `i_library_id` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `Student_classes`
 --
 
-INSERT IGNORE INTO `Student_classes` (`i_student_id`, `i_class_id`, `i_secion_id`, `i_roll_no`, `i_year_id`, `i_room_id`, `i_library_id`) VALUES
-(1, 5, 3, 5, 1, 3, 2),
-(2, 5, 3, 5, 2, 1, 3),
-(3, 7, 3, 11, 1, 4, 12);
+INSERT INTO `Student_classes` (`i_student_id`, `i_class_id`, `i_secion_id`, `i_roll_no`, `i_year_id`, `i_status_id`, `i_room_id`, `i_library_id`) VALUES
+(1, 5, 3, 5, 1, 0, 3, 2),
+(2, 5, 3, 5, 2, 0, 1, 3),
+(3, 7, 3, 11, 1, 0, 4, 12),
+(15, 9, 3, 53, 2, 1, NULL, NULL),
+(16, 8, 2, 12, 2, 1, NULL, NULL),
+(17, 7, 3, 12, 1, 1, NULL, NULL),
+(18, 7, 1, 12, 1, 1, NULL, NULL),
+(19, 6, 2, 13, 1, 1, NULL, NULL),
+(20, 6, 4, 23, 2, 1, NULL, NULL),
+(21, 8, 2, 13, 2, 1, NULL, NULL),
+(24, 8, 2, 13, 2, 1, NULL, NULL),
+(25, 7, 3, 12, 1, 1, NULL, NULL),
+(26, 7, 4, 13, 2, 1, NULL, NULL),
+(27, 10, 1, 14, 1, 1, NULL, NULL),
+(29, 8, 3, 13, 1, 1, NULL, NULL),
+(30, 9, 3, 14, 1, 1, NULL, NULL),
+(32, 7, 4, 23, 2, 4, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -440,9 +493,19 @@ INSERT IGNORE INTO `Student_classes` (`i_student_id`, `i_class_id`, `i_secion_id
 --
 
 CREATE TABLE `Student_status` (
-  `i_status_id` int(2) NOT NULL,
-  `s_status_name` varchar(10) NOT NULL
+  `i_id` int(2) NOT NULL,
+  `s_name` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Student_status`
+--
+
+INSERT INTO `Student_status` (`i_id`, `s_name`) VALUES
+(1, 'pursuing'),
+(2, 'passed'),
+(3, 'left'),
+(4, 'TC');
 
 -- --------------------------------------------------------
 
@@ -472,7 +535,7 @@ CREATE TABLE `Stud_table1` (
 -- Dumping data for table `Stud_table1`
 --
 
-INSERT IGNORE INTO `Stud_table1` (`stud_id`, `stud_fname`, `stud_lname`, `stud_class`, `stud_section`, `stud_roll`, `stud_age`, `stud_gender`, `stud_dob`, `stud_address`, `stud_parent`, `stud_guardian_type`, `stud_guardian`, `stud_status`, `img_name`) VALUES
+INSERT INTO `Stud_table1` (`stud_id`, `stud_fname`, `stud_lname`, `stud_class`, `stud_section`, `stud_roll`, `stud_age`, `stud_gender`, `stud_dob`, `stud_address`, `stud_parent`, `stud_guardian_type`, `stud_guardian`, `stud_status`, `img_name`) VALUES
 (4, 'Rajdeep', 'Palit', 10, 'B', 23, 22, 'male', '1996-11-04', 'Sarsuna', 'Rana Palit', 'father', 'Rana Palit', 'active', 'profile_4.jpeg'),
 (5, 'Subham', 'Yadav', 5, 'B', 34, 23, 'male', '1995-10-03', 'Durgapur', 'Jagdish Yadav', 'father', 'Jagdish Yadav', 'active', 'profile_5.jpg'),
 (6, 'Soutrick', 'Mondal', 7, 'A', 8, 22, 'male', '1111-11-11', 'Dhakkapara', 'Rail Chakraborty', 'father', 'grsjgsrj', 'TC', 'profile_6.jpg'),
@@ -484,7 +547,7 @@ INSERT IGNORE INTO `Stud_table1` (`stud_id`, `stud_fname`, `stud_lname`, `stud_c
 (19, 'Sudipta', 'Banerjee', 5, 'B', 35, 23, 'female', '1995-06-02', 'Burdwan', 'Dulal Banerjee', 'father', 'Dulal Banerjee', 'active', ''),
 (22, 'Kaustav', 'Paul', 6, 'B', 19, 22, 'female', '1996-11-23', 'Ranaghat', 'Soma Paul', 'father', 'Kaushik Kumar Paul', 'left', ''),
 (24, 'Amit ', 'Roy', 7, 'B', 4, 12, 'female', '2006-11-02', 'Kharagpur', 'Ashoke roy', 'father', 'Samrat Ashoke', 'TC', ''),
-(40, 'saddsad', 'sdsadsa', 5, 'A', 4, 4, 'female', '2018-07-18', 'afdfdsf', 'dfdsfdsf', 'father', 'fdgfdg', 'active', 'profile_40.jpg'),
+(40, 'saddsad', 'sdsadsa', 5, 'A', 10, 4, 'female', '2018-07-18', 'afdfdsf', 'dfdsfdsf', 'father', 'fdgfdg', 'active', 'profile_40.jpg'),
 (42, 'EWG', 'WGEeGW', 5, 'WEG', 5, 5, 'male', '2018-07-11', 'ETHA', 'ERAN', 'father', 'ERHH', 'left', 'profile_42.jpg'),
 (47, 'dfhndghn', 'ngfjtrjr', 9, 'B', 4, 4, 'male', '2018-06-28', 'fdgbd', 'dndnjt', 'mother', 'thndhn', 'active', NULL),
 (49, 'dbdfd', 'dbfdfb', 6, 'B', 4, 5, 'male', '2018-07-03', 'bdfss', 'bffdsrbsd', 'mother', 'sfbfsbs', 'left', NULL),
@@ -512,7 +575,7 @@ CREATE TABLE `Subject` (
 -- Dumping data for table `Subject`
 --
 
-INSERT IGNORE INTO `Subject` (`i_id`, `s_name`, `i_total_marks`, `i_pass_marks`) VALUES
+INSERT INTO `Subject` (`i_id`, `s_name`, `i_total_marks`, `i_pass_marks`) VALUES
 (1, 'PHP', 100, 25),
 (2, 'Java', 100, 30),
 (3, 'Javascript', 100, 35),
@@ -577,7 +640,7 @@ CREATE TABLE `Time` (
 -- Dumping data for table `Time`
 --
 
-INSERT IGNORE INTO `Time` (`i_time_id`, `dt_start_time`, `dt_end_time`) VALUES
+INSERT INTO `Time` (`i_time_id`, `dt_start_time`, `dt_end_time`) VALUES
 (1, '10:30:00', '11:15:00'),
 (2, '11:30:00', '12:30:00'),
 (3, '12:45:00', '01:30:00'),
@@ -599,7 +662,7 @@ CREATE TABLE `user_details_table1` (
 -- Dumping data for table `user_details_table1`
 --
 
-INSERT IGNORE INTO `user_details_table1` (`user_id`, `user_password`) VALUES
+INSERT INTO `user_details_table1` (`user_id`, `user_password`) VALUES
 ('admin', 'admin'),
 ('kaustavcse', 'kaustavcse');
 
@@ -618,7 +681,7 @@ CREATE TABLE `Year` (
 -- Dumping data for table `Year`
 --
 
-INSERT IGNORE INTO `Year` (`i_year_id`, `s_year_val`) VALUES
+INSERT INTO `Year` (`i_year_id`, `s_year_val`) VALUES
 (1, '2017'),
 (2, '2018');
 
@@ -714,7 +777,7 @@ ALTER TABLE `Student_classes`
 -- Indexes for table `Student_status`
 --
 ALTER TABLE `Student_status`
-  ADD PRIMARY KEY (`i_status_id`);
+  ADD PRIMARY KEY (`i_id`);
 
 --
 -- Indexes for table `Stud_table1`
@@ -766,12 +829,12 @@ ALTER TABLE `Year`
 -- AUTO_INCREMENT for table `City`
 --
 ALTER TABLE `City`
-  MODIFY `i_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `i_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 --
 -- AUTO_INCREMENT for table `Class`
 --
 ALTER TABLE `Class`
-  MODIFY `i_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `i_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `Exam_type`
 --
@@ -791,12 +854,12 @@ ALTER TABLE `Library_book_type`
 -- AUTO_INCREMENT for table `Personal_details`
 --
 ALTER TABLE `Personal_details`
-  MODIFY `i_stud_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `i_stud_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `Pincode`
 --
 ALTER TABLE `Pincode`
-  MODIFY `i_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `i_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `Room`
 --
@@ -811,17 +874,17 @@ ALTER TABLE `Section`
 -- AUTO_INCREMENT for table `State`
 --
 ALTER TABLE `State`
-  MODIFY `i_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `i_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT for table `Student_classes`
 --
 ALTER TABLE `Student_classes`
-  MODIFY `i_student_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `i_student_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT for table `Student_status`
 --
 ALTER TABLE `Student_status`
-  MODIFY `i_status_id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `i_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `Stud_table1`
 --
