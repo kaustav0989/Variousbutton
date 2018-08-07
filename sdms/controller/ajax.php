@@ -9,6 +9,7 @@
 		foreach( $result as $row )
 		{
 			echo rtrim($row['s_name']."||");
+			
 		}
 	}		
 ?>

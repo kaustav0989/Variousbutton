@@ -1,7 +1,7 @@
       
 <?php
 
-    ini_set("display_errors",1);
+//   ini_set("display_errors",1);
 //    include("../model/Add.php");
     include("../model/show_list.php");
 //    include("../model/Add.php");
@@ -51,22 +51,24 @@
 
 
 
-      try
+    /*  try
       {  
 
         $obj->off();
-        $obj->TransactionBegin();
+        $obj->TransactionBegin();*/
 
 
          if( $class != 'select' )
         {
           $cl_val   = "'$class'";
           $class_id = $obj->class($cl_val);
+        /*
           if( $class_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
-          }  
+          } 
+          */ 
           $scl_val .= "'$class_id',";
           $scl_col .= "`i_class_id`,";
         }  
@@ -75,11 +77,13 @@
         {
           $status_val = "'$status'";
           $status_id  = $obj->status($status_val);
+        /*
           if( $status_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
           }
+          */
           $scl_val   .="'$status_id',";
           $scl_col   .= "`i_status_id`,";
         }  
@@ -87,25 +91,25 @@
         if( $state != '' )
         {
           $st_val   = "'$state'";
-          $state_id = $obj->state($st_val); 
-          if( $state_id == 0 )
+         // $state_id = $obj->state($st_val); 
+        /*  if( $state_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
-          }
+          }*/
           $spd_col .="`i_state_id`,"; 
-          $spd_val .="'{$state_id}',";
+          $spd_val .="{$st_val},";
         }
 
         if( $city != '' )
         {
           $ct_val  = "'$city'";
           $city_id = $obj->city($ct_val);
-          if( $city_id == 0 )
+        /*  if( $city_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
-          }  
+          } */ 
           $spd_col .="`i_city_id`,";
           $spd_val .="'{$city_id}',";
 
@@ -115,11 +119,11 @@
         {
           $year_val .= "'$year'";  
           $year_id   = $obj->year($year_val);
-          if( $year_id == 0 )
+        /*  if( $year_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
-          }
+          }*/
           $scl_val  .= "'$year_id',";
           $scl_col  .= "`i_year_id`,";
         }
@@ -128,11 +132,11 @@
         {
           $sec_val .= "'$sec'";
           $sec_id   =$obj->sec($sec_val);
-          if( $sec_id == 0 )
+        /*  if( $sec_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
-          }
+          }*/
           $scl_val .="'$sec_id',";
           $scl_col .="`i_secion_id`,";
         }  
@@ -141,11 +145,11 @@
         {
           $pin_val = "'$pin'";
           $pin_id  = $obj->pin($pin_val);
-          if( $pin_id == 0 )
+        /*  if( $pin_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
-          }
+          }*/
           $spd_col .="`i_pin_id`,";
           $spd_val .="'{$pin_id}',";
         }
@@ -210,10 +214,10 @@
 
         $stud_id = $obj->total($spd_col,$spd_val);
 
-        if( $stud_id == 0 )
+      /*  if( $stud_id == 0 )
         {
           throw new Exception($obj->conn->error());
-        }  
+        } */ 
 
         $scl_col .="`i_student_id`,";
         $scl_val .="'$stud_id',";
@@ -290,19 +294,19 @@
           exit;
         }*/
 
-        $obj->Commit();
-        $obj->TransactionEnd();
+      /*  $obj->Commit();
+        $obj->TransactionEnd();*/
       }  
 
-      catch(Exception $e)
+     /* catch(Exception $e)
       {
           $obj->Rollback();
           $obj->TransactionEnd();
           header("location:add_student.php");
           exit;
-      }
+      }*/
 
-    }
+  //  }
 
         $obj             = new ShowList();
         $data            = $obj->allstate();
@@ -373,8 +377,9 @@
 
         if( $state != '' )
         {
-          $st_val   = "'$state'";
-          $state_id = $obj->state($st_val); 
+        //  $st_val   = "'$state'";
+        //  $state_id = $obj->state($st_val);
+          $state_id = $state; 
 
           array_push($spd_col,"`i_state_id`"); 
           array_push($spd_val,"'{$state_id}'");
@@ -392,7 +397,7 @@
 
         if( $year != '' )
         {
-          $year_val .= "'$year'";  
+          $year_val  = "'$year'";  
           $year_id   = $obj->year($year_val);
 
           array_push($scl_val,"'$year_id'");
@@ -401,7 +406,7 @@
 
         if( $sec != 'select' )
         {
-          $sec_val .= "'$sec'";
+          $sec_val  = "'$sec'";
           $sec_id   =$obj->sec($sec_val);
 
           array_push($scl_val,"'$sec_id'");
@@ -536,11 +541,11 @@
                       }
                   }
               }
-              set_msg('Data added successfully.', 'success'); 
+              set_msg('Data updated successfully.', 'success'); 
               header("location:all_student_details.php?page=edit&stud_id=".(encrypt($id)));
               exit;
           }
-          else
+          if( $retval <= 0 )
           {
                   set_msg('Nothing to update.', 'error'); 
                   header("Location: all_student_details.php?page=edit&stud_id=".encrypt($id));
@@ -554,6 +559,10 @@
          $object1 = new ShowList();
          $datas = $object1->showeditlist($id);
          $_SESSION['edit'] = $datas;
+         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+         $data            = $object1->allstate();
+         $_SESSION['ajax'] = $data;
+         #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
          include("../view/edit_student.php"); 
       } 
       else

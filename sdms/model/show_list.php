@@ -62,6 +62,7 @@
                     ct.s_name AS city,
 					sc.s_name AS section,
                     st.s_name as state,
+                    st.i_id   AS state_id,
                     pn.s_no AS pin,
 					scl.i_roll_no AS roll , 
 					spd.s_stud_contact AS contact,
@@ -127,7 +128,7 @@
     	public function state($state)
     	{
     		$obj = new BaseController();
-    		$sql = "SELECT `i_id` FROM `State` WHERE `s_name` = {$state}";
+    		$sql = "SELECT `i_id` FROM `State` WHERE `i_id` = {$state}";
     		//echo $sql; exit;
     		$result = $obj->conn->query($sql);
     		while($row = $result->fetch_assoc())
@@ -146,12 +147,12 @@
     			while($row = $result->fetch_assoc())
     			return $row['i_id'];	
     		}	
-    		else
+    	/*	else
 			{
 				$sql = "INSERT INTO City(`s_name`) VALUES($city)";
 				$obj->conn->query($sql);
 				return $obj->conn->insert_id;
-			}
+			}*/
     		
     	}
     
@@ -262,6 +263,7 @@
     	{
     		$obj = new BaseController();
     		$sql = "UPDATE `Personal_details` SET {$set} WHERE `i_stud_id`=".$id;
+        //    echo $sql; exit;
     		return $result = $obj->conn->query($sql);
     	}
 
@@ -270,6 +272,7 @@
     	{
     		$obj = new BaseController();
     		$sql = "UPDATE `Student_classes` SET {$updt} WHERE `i_student_id`=".$id;
+            //echo $sql; exit;
     		return $result = $obj->conn->query($sql);
     	}
 

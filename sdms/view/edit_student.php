@@ -15,7 +15,9 @@
         {
             window.location.href="all_student_details.php";
         }
-    </script>    
+    </script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="../resources/js/ajax.js"></script>  
 </head>    
 <body>
         <?php echo show_msg(); ?>
@@ -107,21 +109,43 @@
             <td>
                 <input type="text" name="stud_address" value="<?php echo ($row['address'])?$row['address']:''; ?>"/>
             </td>
+        <!--
             <td>City</td>
             <td>
-                <input type="text" name="stud_city" value="<?php echo ($row['city'])?$row['city']:''; ?>"/>
+                <input type="text" name="stud_city" value="<?php// echo ($row['city'])?$row['city']:''; ?>"/>
             </td>
             <td>State</td>
             <td>
-                <input type="text" name="stud_state" value="<?php echo ($row['state'])?$row['state']:''; ?>"/>
+                <input type="text" name="stud_state" value="<?php// echo ($row['state'])?$row['state']:''; ?>"/>
             </td>
-            <td>&nbsp;</td>
-            </tr>
-            <tr>
+        -->
+            <td>State</td>
+            <td>    
+            <select id="state" name="stud_state">
+            <?php
+                 foreach ($_SESSION['ajax'] as $val) {
+            ?>
+            <option value="<?php echo $val['i_id']?>" <?php echo ( $row['state_id'] == $val['i_id'] )?'selected':'';?>><?php echo $val['s_name'] ?></option>
+            <?php  } ?>
+            </select>
+            </td>
+        </tr>
+        <tr> 
+            <td>City</td>
+            <td>
+            <div id = "city">
+                <select name = "stud_city">
+                    <option><?php echo ($row['city'])?$row['city']:''; ?></option>
+                </select>
+            </div>
             <td>Pin</td>
             <td>
                 <input type="text" name="stud_pin" value="<?php echo ($row['pin'])?$row['pin']:''; ?>"/>
             </td>
+            <td>&nbsp;</td>
+            </tr>
+            <tr>
+            
             </tr>
             <tr bgcolor="#A9A9A9">
                 <td colspan="8">Student Registration Details</td>
