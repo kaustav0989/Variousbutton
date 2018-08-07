@@ -1,7 +1,7 @@
 <?php
 include("header.html");
 include("../controller/login_check.php");
-include("../controller/show_list.php");
+//include("../controller/show_list.php");
 ?>
 <html>
     
@@ -11,7 +11,20 @@ include("../controller/show_list.php");
             {
                 window.location.href="all_student_details.php";
             }
+
+        /*    function change_state()
+            {
+                var xmlhttp = new XMLHttpRequest();
+                var id      = document.getElementById("state").value;
+                xmlhttp.open("GET","ajax.php?state="+id,false);
+                alert(id);
+                xmlhttp.send(null);
+                alert(xmlhttp.responseText);
+                document.getElementById("city").innerHTML = xmlhttp.responseText;
+            }*/
         </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="../resources/js/ajax.js"></script>
     </head>
     <body>
 
@@ -82,18 +95,27 @@ include("../controller/show_list.php");
             </td>  -->
             <td>State</td>
             <td>
-                <select>
+                <select id="state" name="stud_state">
                     <option>Select</option>
                     <?php
-                        $obj = new ShowList();
-                        $result = $obj->allstate(); 
-                        foreach ($result as $row) {
+                       
+                        foreach ($_SESSION['add'] as $row) {
                                 
                     ?>
                     <option value="<?php echo $row['i_id']?>"><?php echo $row['s_name'];?></option>
                 <?php  } ?>
                 </select>
             </td>
+        </tr>
+        <tr> 
+            <td>City</td>
+            <td>
+            <div id = "city">
+                <select name = "stud_city">
+                    <option>Select</option>
+                </select>
+            </div>
+            </td>   
             <td>Pin</td>
             <td>
                 <input type="text" name="stud_pin" />
