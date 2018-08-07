@@ -1,7 +1,7 @@
 <?php
-    ini_set("display_errors", 1);
+//    ini_set("display_errors", 1);
     session_start();
-    include("../view/header.html");    
+//    include("../view/header.html");    
     //include("../model/fetch_users.php");
     include("../model/show_list.php");
     include("general_functions.php");

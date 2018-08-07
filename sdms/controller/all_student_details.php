@@ -1,7 +1,7 @@
       
 <?php
 
-//    ini_set("display_errors",1);
+    ini_set("display_errors",1);
 //    include("../model/Add.php");
     include("../model/show_list.php");
 //    include("../model/Add.php");
@@ -304,6 +304,9 @@
 
     }
 
+        $obj             = new ShowList();
+        $data            = $obj->allstate();
+        $_SESSION['add'] = $data;
         require_once("../view/add_student.php");
     } 
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
