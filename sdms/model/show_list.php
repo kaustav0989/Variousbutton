@@ -301,5 +301,22 @@
             //print_r($data);
             return $data; 
         }
+
+        public function allcity($id)
+        {
+            $obj = new BaseController();
+            $sql = "SELECT * FROM `City` WHERE `i_state_id` = '".$id."'";
+            $result = $obj->conn->query($sql);
+            if( $result->num_rows > 0 )
+            {
+                $data = array();
+                while($row = $result->fetch_assoc())
+                {
+                    $data[] = $row;
+                }
+            }
+            //print_r($data);
+            return $data; 
+        }
     }
 ?>
