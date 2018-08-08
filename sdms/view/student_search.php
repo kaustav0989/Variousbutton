@@ -1,6 +1,7 @@
 
   <?php  
-    include("header.html"); 
+    include("header.php");
+
     session_start();
   ?>
   
@@ -13,19 +14,19 @@
 
       function add_page()
       {
-        window.location.href = 'all_student_details.php?page=add';
+        window.location.href = '<?php echo $url; ?>/controller/all_student_details.php?page=add';
       }
       function edit_page(elem)
       {
          var id = elem.getAttribute('id').split('_').pop();
-         window.location.href="all_student_details.php?page=edit&stud_id="+id;
+         window.location.href="<?php echo $url; ?>/controller/all_student_details.php?page=edit&stud_id="+id;
       }
       function delete_page(elem)
       {
          if( confirm("Do you want to delete?") )
          {
             var id = elem.getAttribute('id').split('_').pop();
-            window.location.href="all_student_details.php?page=delete&stud_id="+id;  
+            window.location.href="<?php echo $url; ?>/controller/all_student_details.php?page=delete&stud_id="+id;  
          }
          else
             return false;
@@ -33,7 +34,7 @@
       function view_page(elem)
       {
           var id = elem.getAttribute('id').split('_').pop();
-          window.location.href="all_student_details.php?page=view&stud_id="+id;
+          window.location.href="<?php echo $url; ?>/controller/all_student_details.php?page=view&stud_id="+id;
       }
     </script>
         

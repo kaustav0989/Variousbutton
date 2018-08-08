@@ -1,6 +1,6 @@
 <?php 
  //   ini_set("display_errors", 1);
-    include("header.html"); 
+    include("header.php"); 
     session_start();
 
 ?>
@@ -13,7 +13,7 @@
     <script type="text/javascript">
     function back_page()
         {
-            window.location.href="all_student_details.php";
+            window.location.href="<?php echo $url; ?>/controller/all_student_details.php";
         }
 
     function delete_page(elem)
@@ -21,7 +21,7 @@
         if( confirm("Do you want to delete?") )
          {
             var id = elem.getAttribute('id').split('_').pop();
-            window.location.href="all_student_details.php?page=delete&stud_id="+id;  
+            window.location.href="<?php echo $url; ?>/controller/all_student_details.php?page=delete&stud_id="+id;  
          }
          else
             return false;

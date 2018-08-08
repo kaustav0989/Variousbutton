@@ -21,7 +21,7 @@ function get_city(state_id)
 	}
 	else
 	{
-		$.get("../controller/ajax.php", {state : state_id},function(data){
+		$.get("http://localhost/sdms/controller/ajax.php", {state : state_id},function(data){
 
 			
 			var city = data.split("||");

@@ -1,6 +1,6 @@
 <?php 
  //   ini_set("display_errors", 1);
-    include("header.html"); 
+    include("header.php"); 
     session_start();
 
 ?>
@@ -13,11 +13,11 @@
     <script type="text/javascript">
     function back_page()
         {
-            window.location.href="all_student_details.php";
+            window.location.href="<?php echo $url; ?>/controller/all_student_details.php";
         }
     </script>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="../resources/js/ajax.js"></script>  
+        <script src="<?php echo $url; ?>/resources/js/ajax.js"></script>  
 </head>    
 <body>
         <?php echo show_msg(); ?>

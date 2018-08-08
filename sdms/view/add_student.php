@@ -1,5 +1,5 @@
 <?php
-include("header.html");
+include("header.php");
 include("../controller/login_check.php");
 //include("../controller/show_list.php");
 ?>
@@ -9,7 +9,7 @@ include("../controller/login_check.php");
         <script type="text/javascript">
             function back()
             {
-                window.location.href="all_student_details.php";
+                window.location.href="<?php echo $url; ?>/controller/all_student_details.php";
             }
 
         /*    function change_state()
@@ -24,7 +24,7 @@ include("../controller/login_check.php");
             }*/
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="../resources/js/ajax.js"></script>
+        <script src="<?php echo $url; ?>/resources/js/ajax.js"></script>
     </head>
     <body>
 

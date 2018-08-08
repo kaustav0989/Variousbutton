@@ -5,7 +5,7 @@
     $page     = "Dashboard";
     $breadcum = 'Dashboard';
 
-    include("../view/header.html");
+    include("../view/header.php");
 
 ?>    
     <html>
