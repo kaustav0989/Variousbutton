@@ -1,7 +1,6 @@
       
 <?php
 
-//   ini_set("display_errors",1);
 //    include("../model/Add.php");
     include("../model/show_list.php");
 //    include("../model/Add.php");
@@ -51,24 +50,24 @@
 
 
 
-    /*  try
+      try
       {  
 
         $obj->off();
-        $obj->TransactionBegin();*/
+        $obj->TransactionBegin();
 
 
          if( $class != 'select' )
         {
           $cl_val   = "'$class'";
           $class_id = $obj->class($cl_val);
-        /*
+        
           if( $class_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
           } 
-          */ 
+           
           $scl_val .= "'$class_id',";
           $scl_col .= "`i_class_id`,";
         }  
@@ -77,13 +76,13 @@
         {
           $status_val = "'$status'";
           $status_id  = $obj->status($status_val);
-        /*
+        
           if( $status_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
           }
-          */
+        
           $scl_val   .="'$status_id',";
           $scl_col   .= "`i_status_id`,";
         }  
@@ -105,11 +104,11 @@
         {
           $ct_val  = "'$city'";
           $city_id = $obj->city($ct_val);
-        /*  if( $city_id == 0 )
+          if( $city_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
-          } */ 
+          }  
           $spd_col .="`i_city_id`,";
           $spd_val .="'{$city_id}',";
 
@@ -119,11 +118,11 @@
         {
           $year_val .= "'$year'";  
           $year_id   = $obj->year($year_val);
-        /*  if( $year_id == 0 )
+          if( $year_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
-          }*/
+          }
           $scl_val  .= "'$year_id',";
           $scl_col  .= "`i_year_id`,";
         }
@@ -132,11 +131,11 @@
         {
           $sec_val .= "'$sec'";
           $sec_id   =$obj->sec($sec_val);
-        /*  if( $sec_id == 0 )
+          if( $sec_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
-          }*/
+          }
           $scl_val .="'$sec_id',";
           $scl_col .="`i_secion_id`,";
         }  
@@ -145,11 +144,11 @@
         {
           $pin_val = "'$pin'";
           $pin_id  = $obj->pin($pin_val);
-        /*  if( $pin_id == 0 )
+          if( $pin_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
-          }*/
+          }
           $spd_col .="`i_pin_id`,";
           $spd_val .="'{$pin_id}',";
         }
@@ -214,10 +213,10 @@
 
         $stud_id = $obj->total($spd_col,$spd_val);
 
-      /*  if( $stud_id == 0 )
+        if( $stud_id == 0 )
         {
           throw new Exception($obj->conn->error());
-        } */ 
+        }  
 
         $scl_col .="`i_student_id`,";
         $scl_val .="'$stud_id',";
@@ -294,19 +293,19 @@
           exit;
         }*/
 
-      /*  $obj->Commit();
-        $obj->TransactionEnd();*/
+        $obj->Commit();
+        $obj->TransactionEnd();
       }  
 
-     /* catch(Exception $e)
+      catch(Exception $e)
       {
           $obj->Rollback();
           $obj->TransactionEnd();
           header("location:add_student.php");
           exit;
-      }*/
+      }
 
-  //  }
+    }
 
         $obj             = new ShowList();
         $data            = $obj->allstate();
