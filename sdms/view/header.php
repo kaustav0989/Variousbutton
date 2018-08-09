@@ -58,6 +58,13 @@
             .add_page_error{
                 color : red;
             }
+
+            .error_form {
+                font-size: 15px;
+                font-family: Arial;
+                color: #FF0052;
+            }
+            
             .loader {
                 border: 16px solid #f3f3f3; /* Light grey */
                 position: absolute;

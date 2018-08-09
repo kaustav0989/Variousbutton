@@ -1,5 +1,6 @@
 <?php
 //    include("../model/Add.php");
+//    ini_set("display_errors",1);
     include("../model/show_list.php");
 //    include("../model/Add.php");
 //    $obj = new BaseController(); 
@@ -44,7 +45,7 @@
       {  
         $obj->off();
         $obj->TransactionBegin();
-         if( $class != 'select' )
+         if( $class != '' )
         {
           $cl_val   = "'$class'";
           $class_id = $obj->class($cl_val);
@@ -77,7 +78,7 @@
         {
           $st_val   = "'$state'";
          // $state_id = $obj->state($st_val); 
-        /*  if( $state_id == 0 )
+         /* if( $state_id == 0 )
           {
             throw new Exception($obj->conn->error());
             
@@ -109,7 +110,7 @@
           $scl_val  .= "'$year_id',";
           $scl_col  .= "`i_year_id`,";
         }
-        if( $sec != 'select' )
+        if( $sec != '' )
         {
           $sec_val .= "'$sec'";
           $sec_id   =$obj->sec($sec_val);
@@ -240,18 +241,7 @@
           header("location:all_student_details.php?page=add");
           exit;
         }  
-      /*  if($retval)
-        {
-          set_msg('Data added successfully.', 'success'); 
-          header("location:all_student_details.php?page=edit&stud_id=".(encrypt($id)));
-          exit;
-        }
-        else
-        {
-          set_msg('Failed to save data. Please try again later', 'error'); 
-          header("location:all_student_details.php?page=add");
-          exit;
-        }*/
+
         $obj->Commit();
         $obj->TransactionEnd();
       }  

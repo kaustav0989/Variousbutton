@@ -7,7 +7,10 @@ include("../controller/login_check.php");
     
     <head>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="<?php echo $url; ?>/resources/js/page_loader.js"></script>
+         <script src="<?php echo $url; ?>/resources/js/ajax.js"></script>
+        <!-- <script src="<?php echo $url; ?>/resources/js/validation.js"></script> -->
+         <script src="<?php echo $url; ?>/resources/js/form_validation.js"></script>
+    <!--     <script src="<?php //echo $url; ?>/resources/js/form_validation.js"></script>  -->
         <script type="text/javascript">
             function back()
             {
@@ -25,17 +28,13 @@ include("../controller/login_check.php");
                 document.getElementById("city").innerHTML = xmlhttp.responseText;
             }*/
         </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="<?php echo $url; ?>/resources/js/ajax.js"></script>
     </head>
     <body>
 
-        <div class="loader"></div>
 
          <?php echo show_msg(); ?>
 
-        <div class="content">
-        <form name="search" method="post" action="" enctype="multipart/form-data">
+        <form name="search" method="post" action="" enctype="multipart/form-data" id="add_form_id">
             <table width="100%" cellpadding="3" cellspacing="2" align="left" border="0" style="border-bottom:1px solid #ddd; margin-bottom: 5px; background-color: #efefef;">
             
         <tr bgcolor="#A9A9A9">
@@ -44,26 +43,34 @@ include("../controller/login_check.php");
         <tr>
             <td>First-name</td>
             <td>
-                <input type="text"  name="stud_fname"  autocomplete="off"/>
+                <input type="text"  id="first_name" name="stud_fname"  autocomplete="off"/>
             </td>
             <td>Last-name</td>
             <td>
-                <input type="text"  name="stud_lname"  autocomplete="off"/>
+                <input type="text"  name="stud_lname" id="last_name" autocomplete="off"  />
             </td>
             <td>Father-name</td>
             <td>
-                <input type="text"  name="father_name"  autocomplete="off"/>
+                <input type="text"  name="father_name"  id="father" autocomplete="off"  />
             </td>
             <td>Mother-name:</td>
             <td>
-                <input type="text"  name="mother_name"  autocomplete="off"/>
+                <input type="text"  name="mother_name"  autocomplete="off"  />
             </td>
         </tr>
         <tr>
+            <td>&nbsp;</td>
+            <td><span class="error_form" id="fname_error_message"></span></td>
+            <td>&nbsp;</td>
+            <td><span class="error_form" id="lname_error_message"></span></td>
+            <td>&nbsp;</td>
+            <td><span class="error_form" id="ftname_error_message"></span></td>
+        </tr> 
+        <tr>
             <td>Gender:</td>
             <td>
-                <select name="stud_gender"  required>
-                    <option value="select" selected="selected">Select</option>
+                <select name="stud_gender"   id="gender">
+                    <option value="">Select</option>
                     <option value="male" >Male</option>
                     <option value="female">Female</option>
                     <option value="other" >Other</option>
@@ -75,12 +82,19 @@ include("../controller/login_check.php");
             </td>
             <td>Contact Number</td>
             <td>
-                <input type="text" name="stud_contact" />
+                <input type="text" name="stud_contact" id="contact"/>
             </td>
             <td>&nbsp;</td>
             <td>
                 <input type="file" name="file_name" />
             </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><span class="error_form" id="gender_error_message"></span></td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+             <td><span class="error_form" id="contact_error_message"></span></td>
         </tr>
         <tr bgcolor="#A9A9A9">
             <td colspan="8">Student Address Details</td>
@@ -90,7 +104,7 @@ include("../controller/login_check.php");
             <td>
                 <input type="text" name="stud_address"/>
             </td>
-    <!--        <td>State</td>
+    <!--            <td>State</td>
             <td>
                 <input type="text" name="stud_state" />
             </td>
@@ -112,6 +126,7 @@ include("../controller/login_check.php");
                 </select>
             </td>
         </tr>
+        <tr><td>&nbsp;</td></tr>
         <tr> 
             <td>City</td>
             <td>
@@ -123,8 +138,15 @@ include("../controller/login_check.php");
             </td>   
             <td>Pin</td>
             <td>
-                <input type="text" name="stud_pin" />
+                <input type="text" name="stud_pin" id="pin"/>
             </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+             <td>&nbsp;</td>
+              <td>&nbsp;</td>
+
+            <td><span class="error_form" id="pin_error_message"></span></td>
         </tr>
         <tr bgcolor="#A9A9A9">
             <td colspan="8">Student Registration Details</td>
@@ -132,15 +154,16 @@ include("../controller/login_check.php");
         <tr>
             <td>Year</td>
             <td>
-                <select name="stud_year">
-                    <option value="2017" selected="selected" >2017</option>
+                <select name="stud_year" id="year">
+                    <option value="" >select</option>
+                    <option value="2017" >2017</option>
                     <option value="2018">2018</option>
                 </select>    
             </td>
             <td>Class</td>
             <td>
-                <select name="stud_class"  required >
-                    <option value="select" selected="selected" >Select</option>
+                <select name="stud_class" id="class" >
+                    <option value="">Select</option>
                     <option value="Five">V</option>
                     <option value="Six">VI</option>
                     <option value="Seven">VII</option>
@@ -151,8 +174,8 @@ include("../controller/login_check.php");
             </td>
             <td>Section</td>
             <td>
-                <select name="stud_section"  required >
-                    <option value="select" selected="selected" >Select</option>
+                <select name="stud_section" id="section" >
+                    <option value="">Select</option>
                     <option value="A">A</option>
                     <option value="B">B</option>
                     <option value="C">C</option>
@@ -160,17 +183,25 @@ include("../controller/login_check.php");
                     <option value="E">E</option>
                 </select>
             </td>
-            <td>Roll</td>
-            <td>
-                <input type="number" name="stud_roll"/>
-            </td>
         </tr>
         <tr>
+            <td>&nbsp;</td>
+            <td><span class="error_form" id="year_error_message"></span></td>
+            <td>&nbsp;</td>
+            <td><span class="error_form" id="class_error_message"></span></td>
+            <td>&nbsp;</td>
+            <td><span class="error_form" id="section_error_message"></span></td>
+        </tr>
+        <tr>
+            <td>Roll</td>
+            <td>
+                <input type="number" name="stud_roll" id="roll"/>
+            </td>
             <td>Status</td>
             <td>
-                <select name="stud_status"  required >
-                    <option value="select"  >Select</option>
-                    <option value="pursuing" selected="selected">Pursuing</option>
+                <select name="stud_status" id="status" >
+                    <option value="">Select</option>
+                    <option value="pursuing">Pursuing</option>
                     <option value="passed">Passed</option>
                     <option value="left">Left</option>
                     <option value="TC">TC</option>
@@ -178,6 +209,10 @@ include("../controller/login_check.php");
             </td>
             <td colspan="6"></td>
         </tr>
+         <td>&nbsp;</td>
+            <td><span class="error_form" id="roll_error_message"></span></td>
+        <td>&nbsp;</td>
+            <td><span class="error_form" id="status_error_message"></span></td>
             <tr>
                 <td><input type="submit" value="Save" name="Add_save"></td>
                 <td><input type="reset" value="Reset"></td>
@@ -185,6 +220,5 @@ include("../controller/login_check.php");
             </tr>
             </table>
         </form>
-    </div>
 <html>
        
