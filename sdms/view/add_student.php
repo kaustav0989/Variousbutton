@@ -6,6 +6,8 @@ include("../controller/login_check.php");
 <html>
     
     <head>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="<?php echo $url; ?>/resources/js/page_loader.js"></script>
         <script type="text/javascript">
             function back()
             {
@@ -28,8 +30,11 @@ include("../controller/login_check.php");
     </head>
     <body>
 
-        <?php echo show_msg(); ?>
+        <div class="loader"></div>
 
+         <?php echo show_msg(); ?>
+
+        <div class="content">
         <form name="search" method="post" action="" enctype="multipart/form-data">
             <table width="100%" cellpadding="3" cellspacing="2" align="left" border="0" style="border-bottom:1px solid #ddd; margin-bottom: 5px; background-color: #efefef;">
             
@@ -180,6 +185,6 @@ include("../controller/login_check.php");
             </tr>
             </table>
         </form>
-
+    </div>
 <html>
        

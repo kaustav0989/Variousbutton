@@ -33,7 +33,7 @@
 					Personal_details AS spd LEFT JOIN Student_classes AS scl ON spd.i_stud_id=scl.i_student_id 
 					LEFT JOIN City AS ct ON spd.i_city_id=ct.i_id LEFT JOIN State AS st ON spd.i_state_id=st.i_id 
 					LEFT JOIN Pincode AS pn ON spd.i_pin_id=pn.i_id LEFT JOIN Class AS cl ON scl.i_class_id=cl.i_id 
-					LEFT JOIN Section AS sc ON scl.i_secion_id=sc.i_id ".$where.$limit;
+					LEFT JOIN Section AS sc ON scl.i_secion_id=sc.i_id ".$where." ORDER BY spd.i_stud_id ".$limit;
 
 		//	echo $sql; exit;		
 			
@@ -211,7 +211,7 @@
     	{
     		$obj = new BaseController();
     		$sql = "INSERT INTO `Student_classes`($col) VALUES($val)";
-    		
+            //echo $sql; exit;
     		return $result = $obj->conn->query($sql);
     	}
 
@@ -283,7 +283,9 @@
     		$sql = "DELETE spd.*, scl.* 
 			FROM Personal_details AS spd ,Student_classes as scl 
 			WHERE spd.i_stud_id = scl.i_student_id AND spd.i_stud_id =".$id;
-    		return $result = $obj->conn->query($sql);
+            //echo $sql; exit;
+    		$result = $obj->conn->query($sql);
+            return $rows = $result->affected_rows;
     	}
 
         /*For selecting all states for AJAX Call*/

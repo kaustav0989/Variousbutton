@@ -17,10 +17,12 @@
         }
     </script>  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="<?php echo $url; ?>/resources/js/ajax.js"></script>  
+        <script src="<?php echo $url; ?>/resources/js/ajax.js"></script>
+         <script src="<?php echo $url; ?>/resources/js/page_loader.js"></script>   
 </head>    
 <body>
         <?php echo show_msg(); ?>
+
         <div>&nbsp;</div>
         <form id="stud_search" method="post" action="" align="left" enctype="multipart/form-data">
             <table width="100%" cellpadding="3" cellspacing="2" align="left" border="0" style="border-bottom:1px solid #ddd; margin-bottom: 5px; background-color: #efefef;">

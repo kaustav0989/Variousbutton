@@ -1,3 +1,7 @@
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="<?php echo $url; ?>/resources/js/page_loader.js"></script>   
+
+
 <?php
 
 function encrypt( $val = '' )
@@ -60,7 +64,7 @@ function set_msg( $msg = '', $msg_type = 'success' )
 
         if( $msg_type == 'success' )
         {
-            $all_msg[] = "<div class='success_msg'>".$msg."</div>";
+            $all_msg[] = "<div class='success_msg'>".$msg."</div> ";
         }
         else
         {
