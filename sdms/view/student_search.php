@@ -5,7 +5,8 @@
     session_start();
   ?>
   
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://localhost/sdms/resources/js/page_loader.js"></script>
     <script type="text/javascript">
       function reset_form()
       {

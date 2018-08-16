@@ -110,16 +110,20 @@
                     <h1 align="left"><font color="red">Student Database Management System</font></h1>
                 </td>           
                 <td align="right">
-	               <input type="submit" value="logout" onclick="javascript:logout();" name="logout_btn" />
+                   <?php session_start(); if( isset($_SESSION['user_name']) && !empty($_SESSION['user_name'])){ ?>
+	               <input type="submit" value="logout" onclick="logout();" name="logout_btn" />
+                   <?php }  ?>
                 </td>
             </tr>
+            <?php session_start(); if( isset($_SESSION['user_name']) && !empty($_SESSION['user_name'])){ ?>
             <tr style="background-color: #ffe7e1;" class="breadcum">
                 <td align="left" colspan="2">
-                    <?php echo $breadcum; ?>     
+                    
+                    <?php echo $breadcum; ?>  
+                   
                 </td>
             </tr>
+            <?php }  ?>   
         </table>
-
-	   
 
     

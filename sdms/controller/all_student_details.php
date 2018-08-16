@@ -1,9 +1,7 @@
+
 <?php
-//    include("../model/Add.php");
-//    ini_set("display_errors",1);
-    include("../model/show_list.php");
-//    include("../model/Add.php");
-//    $obj = new BaseController(); 
+ //   ini_set("display_errors", 1);
+    include("../model/show_list.php"); 
     require_once('general_functions.php'); 
     include("login_check.php");
     
@@ -20,7 +18,7 @@
      if(isset($_POST["Add_save"]) && $_POST["Add_save"]="save")
       {
       
-        $obj = new Showlist();
+      $obj = new Showlist();
       $fname   = $_POST['stud_fname'];
       $lname   = $_POST['stud_lname'];
       $father  = $_POST['father_name'];

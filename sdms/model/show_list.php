@@ -284,8 +284,7 @@
 			FROM Personal_details AS spd ,Student_classes as scl 
 			WHERE spd.i_stud_id = scl.i_student_id AND spd.i_stud_id =".$id;
             //echo $sql; exit;
-    		$result = $obj->conn->query($sql);
-            return $rows = $result->affected_rows;
+    		return $result = $obj->conn->query($sql); 
     	}
 
         /*For selecting all states for AJAX Call*/

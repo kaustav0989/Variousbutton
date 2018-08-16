@@ -33,27 +33,47 @@ function decrypt( $val = '' )
 
 function get_pagination( $total_data=0, $limit=5, $start_page=0, $link='' )
 {
+    
+            $block          = ceil($total_data / $limit);
+            $current_page   = (($start_page + $limit) / $limit);
+            $page_number    = 0;
 
-    $block          = ceil($total_data / $limit);
-    $current_page   = (($start_page + $limit) / $limit);
-    $page_number    = 0;
+            $all_block = '<div class="pagination_div">';
+            
+            if( $start_page == 0)
+            {
+                $pagep = 0;
+            }
+            if( $start_page != 0 )
+            {
+                $pagep = $start_page-5;
+            }
+            $all_block .= '<a href="'.$link.'?start_page='.$pagep.'">Prev</a>';
 
-    $all_block = '<div class="pagination_div">';
-    for($i=1;$i<=$block;$i++)
-    {
-        $page_number = ($i - 1) * $limit;
+            for($i=1;$i<=$block;$i++)
+            {
 
-        if($current_page == $i)
-        
-            $anchor = $i;    
-        else
-            $anchor = '<a href="'.$link.'?start_page='.$page_number.'">'.$i.'</a>';
 
-        $all_block .= '<span>'.$anchor.'</span>';
-    }
-    $all_block .= '</div>';
+                $page_number = ($i - 1) * $limit;
+    
+                if($current_page == $i)
+                    $anchor = $i;
+                else
+                    $anchor = '<a href="'.$link.'?start_page='.$page_number.'">'.$i.'</a>';
 
-    return $all_block;
+
+                $all_block .= '<span>'.$anchor.'</span>';
+            }
+            if($start_page == ($block-1)*$limit)
+                  $pagen = ($block-1)*$limit;
+            else
+                  $pagen = $start_page+5;
+
+
+            $all_block .= '<a href="'.$link.'?start_page='.$pagen.'">Next</a>';
+            $all_block .= '</div>';
+            return $all_block;
+   
 }
 
 function set_msg( $msg = '', $msg_type = 'success' ) 

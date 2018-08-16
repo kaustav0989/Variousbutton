@@ -2,7 +2,6 @@
  //   ini_set("display_errors", 1);
     include("header.php"); 
     session_start();
-
 ?>
 <html>
 <head>
@@ -30,7 +29,6 @@
             <!--    <input type="hidden" id="page" name="page" value="edit" /> --> 
 
             <?php
-
                 if(!empty( $_SESSION['edit'] )){
           foreach ($_SESSION['edit'] as $row) {
               if( empty($row['image']) )
@@ -44,7 +42,6 @@
                  {
                     $image = $row['image'];
                  }
-
             ?>     
              <input type="hidden" id="id_hidden" name="id_hidden" value="<?php echo encrypt($row['ID']); ?>" />
 
@@ -214,4 +211,4 @@
                 </tr>
             </table>
         </form>
-    </html>    
+    </html> 
